@@ -1,3 +1,4 @@
+import ThemeProvider from "@/context/Theme";
 import "./globals.css";
 
 import type { Metadata } from "next";
@@ -5,7 +6,7 @@ import localFont from "next/font/local";
 import React from "react";
 
 const inter = localFont({
-  src: "./fonts/Inter.var.woff2",
+  src: "./fonts/Inter-VariableFont_opsz,wght.ttf",
   variable: "--font-inter",
   weight: "100 200 300 400 500 700 800 900",
 });
@@ -31,12 +32,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
-}
+} 
