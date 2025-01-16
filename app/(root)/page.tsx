@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import LeftSidebar from "@/components/navigation/LeftSidebar";
 
 
 const Home = async () => {
